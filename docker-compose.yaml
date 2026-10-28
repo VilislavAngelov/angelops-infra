@@ -1,0 +1,15 @@
+name: angelops-infra
+
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: always
+    command: tunnel run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+    networks:
+      - angelops
+
+networks:
+  angelops:
+    name: angelops
